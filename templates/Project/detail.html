@@ -1,0 +1,52 @@
+{% extends '../base.html' %}
+{% block body %}
+    <div class="jumbotron" data-social="cover" data-pages="parallax" data-scroll-element=".page-container">
+        <div class="cover-photo"
+             style="background-image: url('../../static/assets/img/social/cover.jpg'); height: 250px; opacity: 0.7;">
+
+        </div>
+        <div class=" container    container-fixed-lg sm-p-l-0 sm-p-r-0">
+            <div class="inner" style="transform: translateY(17px); opacity: 1;">
+                <div class="pull-bottom bottom-left m-b-40 sm-p-l-15">
+                    <h1 class="text-white no-margin" class="semi-bold">{{ p.nom_du_projet }}</h1>
+                </div>
+                <div class="pull-bottom bottom-right m-b-40 sm-p-l-15">
+                    <a class="btn btn-secondary" href="{% url 'project_index' %}">Back to list</a><br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card card-bordered " style="padding: 10px 30px; margin-bottom: 50px">
+        <div class="card-header clearfix">
+            #{{ p.id }} - {{ p.nom_du_projet }}
+        </div>
+        <div class="card-description">
+            <b>description : </b>{{ p.description }}<br>
+            <b>Durée : </b>{{ p.duree_du_projet }}<br>
+            <b>Temps alluée! : </b>{{ p.temps_alloue_par_le_createur }}<br>
+            <b>Besoins :</b>{{ p.besoins }}<br>
+
+            {% if membership %}
+                <b>Membres :</b>
+                <table border="1"
+                       class="table table-hover demo-table-search table-responsive-block dataTable no-footer">
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Email</th>
+                    <th>Time</th>
+                    <tr>
+                        {% for m in membership %}
+                            <td>{{ m.etudiant.nom }}</td>
+                            <td>{{ m.etudiant.prenom }} </td>
+                            <td> {{ m.etudiant.email }}</td>
+                            <td> {{ m.time_allocated_by_member }}</td>
+                        {% endfor %}
+                    </tr>
+                </table>
+            {% endif %}
+
+            <a href="{% url 'project_edit' p.id %}">Editer</a>
+        </div>
+    </div>
+{% endblock %}

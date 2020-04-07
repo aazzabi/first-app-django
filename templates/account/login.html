@@ -1,0 +1,51 @@
+{% extends '../base.html' %}
+{% block body %}
+    <div class="pace  pace-inactive">
+        <div class="pace-progress" data-progress-text="100%" data-progress="99"
+             style="transform: translate3d(100%, 0px, 0px);">
+            <div class="pace-progress-inner"></div>
+        </div>
+        <div class="pace-activity"></div>
+    </div>
+    <div class="login-wrapper ">
+        <!-- START Login Background Pic Wrapper-->
+        <div class="bg-pic">
+            <!-- START Background Pic-->
+            <img src="../../static/assets/img/demo/new-york-city-buildings-sunrise-morning-hd-wallpaper.jpg"
+                 data-src="../../static/assets/img/demo/new-york-city-buildings-sunrise-morning-hd-wallpaper.jpg"
+                 data-src-retina="../../static/assets/img/demo/new-york-city-buildings-sunrise-morning-hd-wallpaper.jpg" alt=""
+                 class="lazy">
+            <!-- END Background Caption-->
+        </div>
+        <!-- END Login Background Pic Wrapper-->
+        <!-- START Login Right Container-->
+        <div class="login-container bg-white">
+            <div class="p-l-50 m-l-20 p-r-50 m-r-20 p-t-50 m-t-30 sm-p-l-15 sm-p-r-15 sm-p-t-40">
+                <img src="../../static/assets/img/logo_2x.png" alt="logo" data-src="../../static/assets/img/logo.png"
+                     data-src-retina="../../static/assets/img/logo_2x.png" width="78" height="22">
+                <p class="p-t-35">Sign into your pages account</p>
+                <!-- START Login Form -->
+                <form id="form-login" action="{% url 'login' %}" method="post" class="p-t-15">
+                    {% csrf_token %}
+                    <!-- START Form Control-->
+                    <div class="form-group form-group-default">
+                        <label>Login</label>
+                        <div class="controls">
+                            {{ form.username }}
+                        </div>
+                    </div>
+                    <!-- START Form Control-->
+                    <div class="form-group form-group-default">
+                        <label>password</label>
+                        <div class="controls">
+                            {{ form.password }}
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-cons m-t-10" type="submit">Se connecter</button>
+                </form>
+            </div>
+        </div>
+        <!-- END Login Right Container-->
+    </div>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends '../base.html' %}
+{% block body %}
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group form-group-default ">
+            <label>Project</label>
+            {{ form.nom_du_projet }}
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group form-group-default required ">
+                    <label>Durée</label>
+                    {{ form.duree_du_projet }}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group form-group-default required ">
+                    <label>Temps alloué</label>
+                    {{ form.temps_alloue_par_le_createur }}
+                </div>
+            </div>
+        </div>
+        <div class="form-group form-group-default required ">
+            <label>Besoin</label>
+            {{ form.besoins }}
+        </div>
+        <div class="form-group form-group-default required ">
+            <label>description</label>
+            {{ form.description }}
+        </div>
+        <div class="">
+            {{ form.est_valide }}
+            <label>est_valide</label>
+        </div>
+        <div class="form-group form-group-default required ">
+            <label>createur</label>
+            {{ form.createur }}
+        </div>
+        <div class="form-group form-group-default required ">
+            <label>superviseur</label>
+            {{ form.superviseur }}
+        </div>
+        <button type="submit">Editer</button>
+    </form>
+{% endblock %}

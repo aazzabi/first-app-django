@@ -1,0 +1,40 @@
+{% extends '../base.html' %}
+{% block body %}
+    <div class="row">
+        <div class="col-md-10">
+                <h1>Liste des projets</h1>
+        </div>
+        <div class="col-md-2">
+            <a class="btn btn-success" href="{% url 'project_add' %}">Ajouter un projet</a>
+        </div>
+    </div>
+    <table border="1" class="table table-hover dataTable no-footer">
+        <thead>
+        <th class="text-center sorting_disabled">id</th>
+        <th class="sorting_desc">Nom du projet</th>
+        <th class="sorting_desc">description</th>
+        <th class="sorting_desc">Dureé</th>
+        <th class="sorting_desc">Temps par créa.</th>
+        <th class="sorting_desc">Besoin</th>
+        <th>Actions</th>
+        </thead>
+        <tbody>
+        {% for p in projects %}
+            <tr>
+                <td>{{ p.id }}</td>
+                <td>{{ p.nom_du_projet }}</td>
+                <td>{{ p.description }}</td>
+                <td>{{ p.duree_du_projet }}</td>
+                <td>{{ p.temps_alloue_par_le_createur }}</td>
+                <td>{{ p.besoins }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{% url 'project_detail' p.id %}"><i class="fa fa-eye"></i></a>
+                    <a class="btn btn-secondary" href="{% url 'project_edit' p.id %}"><i class="fa fa-pencil"></i></a>
+                    <a class="btn btn-danger" href="{% url 'project_delete' p.id %}"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </body>
+{% endblock %}
